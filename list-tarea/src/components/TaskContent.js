@@ -1,8 +1,8 @@
-import { Grid, Header, GridRow ,Icon } from "semantic-ui-react";
-
+import { Grid, Header, Icon } from "semantic-ui-react";
+import Task from "./Task";
 export default function TaskContent(props){
 
-    const{tasks}=props;
+    const{tasks, deleteTask}=props;
     if (tasks.length ===0){
         return null
     }
@@ -12,10 +12,13 @@ export default function TaskContent(props){
                     <Icon name="settings" />
                 Administra sus Tareas
                 </Header>
-                <GridRow>
-                    {tasks.length>0 ? tasks.map((task,index)=> (<p>ppp</p> ) )
+                <Grid.Row>
+                    {tasks.length>0 ? tasks.map((task,index)=> (
+                    <Task  task ={task} key={index}  deleteTask={deleteTask} />
+                    
+                    ) )
                     :null}
-                </GridRow>
+                </Grid.Row>
             </Grid>
         );          
 }
